@@ -1,6 +1,6 @@
 # Base Web Project Grunt
 
-Base Web Project using: Grunt, Browsersync, Webpack, Babel.
+Base Web Project using: Grunt, Browsersync, Webpack, Babel and Karma.
 
 Webpack builds Babel as a Express Middleware, Development server is a combination of Browsersync + Express + Webpack.
 Webpack Hot Middleware watches js files and reloads browser.
