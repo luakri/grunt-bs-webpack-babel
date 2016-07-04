@@ -65,4 +65,6 @@ var manageExtensions = function(request, response, next) {
     }
 };
 
-module.exports = manageExtensions;
+module.exports = function(app) {
+    app.use(manageExtensions);
+};

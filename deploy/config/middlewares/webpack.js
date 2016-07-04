@@ -27,7 +27,9 @@ var hotMiddleware = function(compiler) {
     return webpackHotMiddleware(compiler);
 };
 
-module.exports = {
-    bundle: bundle,
-    hotMiddleware: hotMiddleware
+module.exports = function(app) {
+    var webpackBundle = bundle();
+
+    app.use(webpackBundle.middleware);
+    app.use(hotMiddleware(webpackBundle.compiler));
 };
