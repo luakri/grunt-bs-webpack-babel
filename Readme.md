@@ -16,7 +16,7 @@ Prerequisites
 Requirements
 -------------
 
-* Nodejs v.0.12.9
+* Nodejs v.4.5.0
 
         nvm ls-remote
         nvm install 4.5.0
