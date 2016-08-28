@@ -19,8 +19,8 @@ Requirements
 * Nodejs v.0.12.9
 
         nvm ls-remote
-        nvm install 0.12.9
-        nvm use 0.12.9
+        nvm install 4.5.0
+        nvm use 4.5.0
 
 * Please download the [Editor Config](http://editorconfig.org/) plugin for your code editor
 
@@ -45,4 +45,4 @@ Requirements
 
 ## Production Server
 
-* ```node deploy/server --isProd```
+* ```node deploy/server```

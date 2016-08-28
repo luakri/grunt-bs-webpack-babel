@@ -1,7 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
-var getPath = require('../grunt/util/getPath');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+var chalk = require('chalk');
 
+var getPath = require('../grunt/util/getPath');
 var argv = require('minimist')(process.argv.slice(2));
 var isProd = (!argv.isProd) ? false : true;
 
@@ -10,37 +12,37 @@ function root(arg) {
 }
 
 var options = {
-  devtool: 'eval',
-  debug: true,
-  entry: {
+    devtool: 'eval',
+    debug: true,
+    entry: {
     app: [
-      root(getPath('js', true) + 'main.js')
-    ]
-  },
-  output: {
-    path: root(getPath('js', false, true)),
-    filename: 'main.js',
-  },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-  resolve: {
-    extensions: ['', '.js']
-  },
-  module: {
-    loaders: [
-        {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-                presets: ['es2015']
+        root(getPath('js', true) + 'main.js')
+        ]
+    },
+    output: {
+        path: root(getPath('js', false, true)),
+        filename: 'main.js',
+    },
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new ProgressBarPlugin({
+          format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
+        })
+    ],
+    resolve: {
+        extensions: ['', '.js']
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
             }
-        }
-    ]
-  }
+        ]
+    }
 };
 
 if (isProd) {

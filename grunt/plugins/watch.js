@@ -7,16 +7,16 @@ module.exports = {
 
     app_sass: {
         files: [getPath('sass', true) + '**/*.scss'],
-        tasks: ['dev-css', 'browsersync-reload']
+        tasks: ['dev-css']
     },
 
     libs: {
         files: [getPath('js', 'common', true) + 'vendor/**/*.js'],
-        tasks: ['concat:libs','browsersync-reload']
+        tasks: ['concat:libs']
     },
 
     app_html: {
         files: [getPath('src') + '*.html'],
-        tasks: ['copy:app_html', 'browsersync-reload']
+        tasks: ['copy:app_html']
     }
 };
